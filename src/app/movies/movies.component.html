@@ -1,0 +1,10 @@
+<li *ngFor="let movie of movies">
+    <div class="jumbotron">
+        <h1>Movie title: {{movie.title}}</h1>
+        <h3>Overview: {{movie.overview}}</h3>
+        <h3>Popularity: {{movie.vote_average}}</h3>
+        <img src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+    </div>
+</li>
+
+
