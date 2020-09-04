@@ -1,10 +1,17 @@
-<li *ngFor="let movie of movies">
-    <div class="jumbotron">
-        <h1>Movie title: {{movie.title}}</h1>
-        <h3>Overview: {{movie.overview}}</h3>
-        <h3>Popularity: {{movie.vote_average}}</h3>
-        <img src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+
+<div class="container">
+    <div class="row justify-content-center margin-top color">
+        <h1>Populars Movies</h1>
     </div>
-</li>
+    <div class="row justify-content-around " >
+            <div class="col-md-4 margin-top" *ngFor="let movie of movies">
+                <div class="image-and-title">
+                    <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}">
+                    <h3>{{movie.title}}</h3>
+                </div>
+            </div>
+    </div>
+</div>
+
 
 
