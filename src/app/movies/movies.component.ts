@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
-import { Movie,RootObject } from '../movies'
+import { Movie,RequestMovies } from '../movies'
 
 
 @Component({
@@ -18,6 +18,6 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovies(): void {
-    this.moviesService.getMovies().subscribe((data : RootObject) => { this.movies = data.results});
+    this.moviesService.getMovies().subscribe((data : RequestMovies) => { this.movies = data.results});
   }
 }

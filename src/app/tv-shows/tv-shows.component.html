@@ -1,1 +1,13 @@
-<p>tv-shows works!</p>
+<div class="container ">
+    <div class="row justify-content-center margin-top bg-success">
+        <h1>Populars TvShows</h1>
+    </div>
+    <div class="row justify-content-around " >
+            <div class=" col-lg-4 col-md-6 col-sm-12 mt-sm-5" *ngFor="let tvshow of tvshows">
+                <div class=" image-and-title ">
+                    <img src="https://image.tmdb.org/t/p/w300/{{tvshow.poster_path}}">
+                    <h3>{{tvshow.name}}</h3>
+                </div>
+            </div>
+    </div>
+</div>
