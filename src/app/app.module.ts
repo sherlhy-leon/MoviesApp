@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { TvShowsComponent } from './tv-shows/tv-shows.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
-    TopBarComponent
+    TopBarComponent,
+    TvShowsComponent
   ],
   imports: [
     BrowserModule,
