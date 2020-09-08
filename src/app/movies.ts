@@ -1,4 +1,4 @@
-export interface Movie {
+export class Movie {
     popularity: number;
     vote_count: number;
     video: boolean;

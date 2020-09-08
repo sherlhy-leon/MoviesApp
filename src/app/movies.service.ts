@@ -14,4 +14,10 @@ export class MoviesService {
   getMovies() {
     return this.http.get<RequestMovies>("https://api.themoviedb.org/3/movie/popular?api_key=cea68b520beecac6718820e4ac576c3a");
   }
+
+  getMoviebyId(id: number) {
+    return this.http.get<Movie>("https://api.themoviedb.org/3/movie/673174?api_key=cea68b520beecac6718820e4ac576c3a");
+
+  }
+
 }
