@@ -1,4 +1,4 @@
-export interface TvShow {
+export class TvShow {
     original_name: string;
     genre_ids: number[];
     name: string;
