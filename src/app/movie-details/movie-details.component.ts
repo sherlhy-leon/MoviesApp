@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from '../movies.service';
 import { Movie,RequestMovies } from '../movies'
 
@@ -10,10 +11,14 @@ import { Movie,RequestMovies } from '../movies'
 export class MovieDetailsComponent implements OnInit {
 
   movie: Movie = new Movie();
-  constructor(private moviesService: MoviesService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private moviesService: MoviesService) { }
 
   ngOnInit(): void {
-    this.getMoviebyId(2);
+    this.route.paramMap.subscribe(params => {
+      var id = +params.get('id');
+      this.getMoviebyId(id);
+    });
+
   }
 
   getMoviebyId(id:number): void {

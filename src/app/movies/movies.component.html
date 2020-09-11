@@ -5,9 +5,9 @@
     </div>
     <div class="row justify-content-around" >
             <div class=" col-lg-4 col-md-6 col-sm-12 mt-sm-5" *ngFor="let movie of movies">
-                <div>
-                    <img class="mx-auto d-block img-fluid" src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}">
-                    <h3 class="" >{{movie.title}}</h3>
+                <div class="image-and-title">
+                    <img class="img-fluid" src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" routerLink="/movie/{{movie.id}}">
+                    <h3>{{movie.title}}</h3>
                 </div>
             </div>
     </div>

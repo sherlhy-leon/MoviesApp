@@ -16,8 +16,7 @@ export class MoviesService {
   }
 
   getMoviebyId(id: number) {
-    return this.http.get<Movie>("https://api.themoviedb.org/3/movie/673174?api_key=cea68b520beecac6718820e4ac576c3a");
-
+    return this.http.get<Movie>("https://api.themoviedb.org/3/movie/" + id.toString() + "?api_key=cea68b520beecac6718820e4ac576c3a");
   }
 
 }
