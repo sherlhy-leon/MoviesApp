@@ -10,6 +10,7 @@ import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { TvShowDetailsComponent } from './tv-show-details/tv-show-details.component';
 import { LeftBarComponent } from './left-bar/left-bar.component';
+import { GenreComponent } from './genre/genre.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LeftBarComponent } from './left-bar/left-bar.component';
     TvShowsComponent,
     MovieDetailsComponent,
     TvShowDetailsComponent,
-    LeftBarComponent
+    LeftBarComponent,
+    GenreComponent
   ],
   imports: [
     BrowserModule,

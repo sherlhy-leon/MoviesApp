@@ -7,3 +7,8 @@
     margin-top: 100px;
 }
 
+.pos-relative{
+    position: relative !important;
+    transform: none !important;
+}
+

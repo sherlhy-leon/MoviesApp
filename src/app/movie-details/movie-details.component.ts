@@ -18,7 +18,6 @@ export class MovieDetailsComponent implements OnInit {
       var id = +params.get('id');
       this.getMoviebyId(id);
     });
-
   }
 
   getMoviebyId(id:number): void {
