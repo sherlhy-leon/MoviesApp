@@ -7,13 +7,14 @@ import {TvShowDetailsComponent} from './tv-show-details/tv-show-details.componen
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  {path: "", component: HomeComponent},
+  {path: "home", component: HomeComponent},
   {path:"movies", component: MoviesComponent},
   {path:"tv-shows", component:TvShowsComponent},
   {path: "movie/:id", component: MovieDetailsComponent },
   {path: "tvshow/:id", component: TvShowDetailsComponent },
   {path: "movies/:selector", component: MoviesComponent },
-  {path: "movie/genre/:idG", component: MoviesComponent},
-  {path: "home", component: HomeComponent}
+  {path: "movie/genre/:idG", component: MoviesComponent}
 ];
 
 @NgModule({

@@ -14,6 +14,7 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   getMovies(selector: string) {
+    console.log("getMovieById:", selector);
     return this.http.get<RequestMovies>("https://api.themoviedb.org/3/movie/" + selector + "?api_key=cea68b520beecac6718820e4ac576c3a");
   }
 
