@@ -11,6 +11,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { TvShowDetailsComponent } from './tv-show-details/tv-show-details.component';
 import { LeftBarComponent } from './left-bar/left-bar.component';
 import { GenreComponent } from './genre/genre.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { GenreComponent } from './genre/genre.component';
     MovieDetailsComponent,
     TvShowDetailsComponent,
     LeftBarComponent,
-    GenreComponent
+    GenreComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

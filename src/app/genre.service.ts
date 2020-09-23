@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Genre, RequestGenre} from './genre'
-import { Movie , RequestMovies} from './movies'
+import { Genre, RequestGenre } from './genre'
+import { Movie, RequestMovies } from './movies'
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, flatMap, mergeMap } from 'rxjs/operators';
+import { Observable, concat, forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,30 +11,32 @@ import { map } from 'rxjs/operators';
 export class GenreService {
 
   constructor(private http: HttpClient) { }
-  
-  isValidGenre: boolean = true;
 
-  getGenres(type: string) {
+  getGenres(type: string):Observable<Genre[]> {
     return this.http.get<RequestGenre>("https://api.themoviedb.org/3/genre/" + type + "/list?api_key=cea68b520beecac6718820e4ac576c3a")
-    .pipe(map(response => {
-          return response.genres.filter(g => this.existMoviesWith(g));
-    }));
+      .pipe(mergeMap(response => {
+        return this.getActivesGenres(response.genres);
+      }));
   }
 
-  existMovies(genre: Genre) {
-    console.log("ExistMovies!!!!!!!");
+  getMovies() {
     return this.http.get<RequestMovies>("https://api.themoviedb.org/3/movie/popular?api_key=cea68b520beecac6718820e4ac576c3a")
-    .pipe(map(response => {
-        return response.results.some(m => m.genre_ids.some(g => g == genre.id));
-    }));
+      .pipe(map(response => {
+        return response.results;
+      }));
   }
 
-  existMoviesWith(genre: Genre): boolean {
-    console.log("ExistMovieWith!!!!!!!!");
-     this.existMovies(genre).subscribe((data : boolean) => {console.log(data)});
-     console.log(this.isValidGenre);
-     return this.isValidGenre;
-
+  getActivesGenres(genres: Genre[]): Observable<Genre[]> {
+    return this.getMovies().pipe(
+      map((movies: Movie[]) => {
+        var actives: Genre[] = [];
+        genres.forEach(g => {
+          if (movies.some(m => m.genre_ids.some(genreId => genreId == g.id))) {
+            actives.push(g);
+          }
+        })
+        return actives;
+      }));
   }
 
 }
