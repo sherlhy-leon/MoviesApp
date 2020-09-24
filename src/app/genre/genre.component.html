@@ -1,8 +1,16 @@
 <div class="dropdown-item small pt-0 background-none" *ngFor="let genre of genres">
-    <div class="f-size" *ngIf="genre.id==genreId">
-        <a class="text-white font-italic pt-0" (click)="setCurrentGenreId(genre.id)" routerLink="/movie/genre/{{genre.id}}">{{genre.name}}</a>
+    <div *ngIf="type=='movies'">
+        <div class="f-size" *ngIf="genre.id==genreId">
+            <a class="text-white font-italic pt-0" (click)="setCurrentGenreId(genre.id)" routerLink="/movie/genre/{{genre.id}}">{{genre.name}}</a>
+        </div>
+        <a *ngIf="genre.id!=genreId" (click)="setCurrentGenreId(genre.id)" class="text-white pt-0"  routerLink="/movie/genre/{{genre.id}}">{{genre.name}}</a>
     </div>
-    <a *ngIf="genre.id!=genreId" (click)="setCurrentGenreId(genre.id)" class="text-white pt-0"  routerLink="/movie/genre/{{genre.id}}">{{genre.name}}</a>
+    <div *ngIf="type=='tvshows'">
+        <div class="f-size" *ngIf="genre.id==genreId">
+            <a class="text-white font-italic pt-0" (click)="setCurrentGenreId(genre.id)" routerLink="/tvshows/genre/{{genre.id}}">{{genre.name}}</a>
+        </div>
+        <a *ngIf="genre.id!=genreId" (click)="setCurrentGenreId(genre.id)" class="text-white pt-0"  routerLink="/tvshows/genre/{{genre.id}}">{{genre.name}}</a>
+    </div>
 </div> 
       
 

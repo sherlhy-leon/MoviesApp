@@ -1,13 +1,43 @@
-<div class="container ">
-    <div class="row justify-content-center margin-top bg-success">
-        <h1>Populars TvShows</h1>
-    </div>
-    <div class="row justify-content-around " >
-            <div class=" col-lg-4 col-md-6 col-sm-12 mt-sm-5" *ngFor="let tvshow of tvshows">
-                <div class=" image-and-title ">
-                    <img src="https://image.tmdb.org/t/p/w300/{{tvshow.poster_path}}" routerLink="/tvshow/{{tvshow.id}}">
-                    <h3>{{tvshow.name}}</h3>
+<div class="d-flex ">
+    <div class="vertical-nav bg-dark" style="margin-top: 56px; padding: 10px; height: 100vh; position: fixed; width: 15%;">
+        <ul class="nav flex-column bg-dark mb-0">
+            <li class="nav-item" >
+              <a routerLink="/tvshows/popular" class="nav-link text-white font-italic" style="padding:2px;">
+                        <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                        Populars Shows
+                    </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/tvshows/on_the_air" class="nav-link text-white font-italic" style="padding:2px;">
+                        <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+                        Playing now
+                    </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link dropdown-toggle text-white font-italic" role="button"  aria-haspopup="true" aria-expanded="true" style="padding:2px;"> 
+                    <i class="fa fa-cubes mr-3 text-primary fa-fw"></i> 
+                    Genres
+                </a>
+                <div class="pos-relative bg-dark" style="border:none; padding-left: 30px; padding-right: 0px; width: 21%;" >
+                    <app-genre [type] = "'tvshows'"></app-genre>
                 </div>
-            </div>
+            </li>
+    
+        </ul>
     </div>
+    
+    
+    <div class="container " style="margin-left: 18%; margin-top: 50px;">
+        <div class="row justify-content-around " >
+                <div class=" col-lg-4 col-md-6 col-sm-12 mt-sm-5" *ngFor="let tvshow of tvshows">
+                    <div class=" image-and-title">
+                        <img src="https://image.tmdb.org/t/p/w300/{{tvshow.poster_path}}" routerLink="/tvshow/{{tvshow.id}}">
+                        <h3>{{tvshow.name}}</h3>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
 </div>
+

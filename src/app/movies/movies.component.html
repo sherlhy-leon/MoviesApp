@@ -1,7 +1,3 @@
-
-
-
-
 <div class="d-flex ">
     <div class="vertical-nav bg-dark" style="margin-top: 56px; padding: 10px; height: 100vh; position: fixed; width: 15%;">
         <ul class="nav flex-column bg-dark mb-0">
@@ -30,7 +26,7 @@
                     Genres
                 </a>
                 <div class="pos-relative bg-dark" style="border:none; padding-left: 30px; padding-right: 0px; width: 21%;" >
-                    <app-genre></app-genre>
+                    <app-genre [type] = "'movies'"></app-genre>
                 </div>
             </li>
 
@@ -40,7 +36,7 @@
     <div class="container" style="margin-left: 18%; margin-top: 50px;">
         <div class="row justify-content-around" >
                 <div class=" col-lg-4 col-md-6 col-sm-12 mt-sm-5" *ngFor="let movie of movies">
-                    <div class="image-and-title">
+                    <div class="image-and-title" >
                         <img class="img-fluid" src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" routerLink="/movie/{{movie.id}}">
                         <h3>{{movie.title}}</h3>
                     </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TvShowsService } from '../tv-shows.service';
 import { TvShow, RequestTVShows } from '../tv-shows';
 
@@ -10,13 +11,24 @@ import { TvShow, RequestTVShows } from '../tv-shows';
 export class TvShowsComponent implements OnInit {
 
   tvshows: TvShow[] = [];
-  constructor(private tvshowsService: TvShowsService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private tvshowsService: TvShowsService) { }
 
   ngOnInit(): void {
-    this.getTvShows();
+      this.route.paramMap.subscribe(params => {
+      var selector = params.get('selector');
+      var idG = +params.get('idG');
+      if(selector)
+        this.getTvShows(selector);
+      if (idG)
+        this.getTvShowsByGenres(idG);
+    });
   }
-  getTvShows(): void {
-    this.tvshowsService.getTvShows().subscribe((data : RequestTVShows) => { this.tvshows = data.results});
+  getTvShows(selector: string): void {
+    this.tvshowsService.getTvShows(selector).subscribe((data : TvShow[]) => { this.tvshows = data});
+  }
+
+  getTvShowsByGenres(idG: number): void {
+    this.tvshowsService.getTvShowsByGenres(idG).subscribe((data: TvShow[]) => { this.tvshows = data });
   }
 
 }

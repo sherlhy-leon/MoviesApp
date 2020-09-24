@@ -1,7 +1,13 @@
 .image-and-title{
     text-align: center;
     padding: 10px;
+    /* transition: width 2s, height 4s; */
 }
+
+/* .image-and-title :hover {
+    width: 320px;
+    height: 470px;
+} */
 
 .margin-top{
     margin-top: 100px;

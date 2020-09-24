@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Genre} from '../genre';
 import { GenreService } from '../genre.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-genre',
@@ -9,12 +10,18 @@ import { GenreService } from '../genre.service';
 })
 export class GenreComponent implements OnInit {
 
+  @Input()
+  type: string = "";
   genres: Genre[] = [];
   genreId: number|null = null;
   constructor(private genreService: GenreService) { }
 
   ngOnInit(): void {
-    this.getGenres("movie");
+    console.log(this.type)
+    if(this.type == "movies")
+      this.getGenres("movie");
+    else if(this.type == "tvshows")
+      this.getGenres("tv");
   }
 
   getGenres(type: string): void {
