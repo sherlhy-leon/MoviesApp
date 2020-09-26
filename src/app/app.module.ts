@@ -13,6 +13,7 @@ import { LeftBarComponent } from './left-bar/left-bar.component';
 import { GenreComponent } from './genre/genre.component';
 import { HomeComponent } from './home/home.component';
 import { MyListComponent } from './my-list/my-list.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MyListComponent } from './my-list/my-list.component';
     LeftBarComponent,
     GenreComponent,
     HomeComponent,
-    MyListComponent
+    MyListComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
