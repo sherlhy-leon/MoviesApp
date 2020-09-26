@@ -17,7 +17,6 @@ export class GenreComponent implements OnInit {
   constructor(private genreService: GenreService) { }
 
   ngOnInit(): void {
-    console.log(this.type)
     if(this.type == "movies")
       this.getGenres("movie");
     else if(this.type == "tvshows")

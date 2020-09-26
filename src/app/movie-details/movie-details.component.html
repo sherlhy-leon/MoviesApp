@@ -6,7 +6,12 @@
             <p>{{movie.overview}}</p>
             <div class="d-flex justify-content-between">
                 <img src="https://image.tmdb.org/t/p/w185/{{movie.backdrop_path}}">
-                <h6>{{movie.vote_average}}</h6>
+                <div>
+                    <h6>Popularity: {{movie.vote_average}}</h6>
+                    <button *ngIf="isfavorite" type="button" class="btn btn-primary" (click)="RemovetoFavorites(movie)">Remove</button>
+                    <button *ngIf="!isfavorite" type="button" class="btn btn-success" (click)="AddtoFavorites(movie)">Add</button>
+                </div>
+                
             </div>
         </div>
     </div>

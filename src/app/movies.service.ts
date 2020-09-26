@@ -11,10 +11,10 @@ import { catchError, retry, map } from 'rxjs/operators';
 })
 export class MoviesService {
 
+   favoritesmovies: Movie[] = []; 
   constructor(private http: HttpClient) { }
 
   getMovies(selector: string) {
-    console.log("getMovieById:", selector);
     return this.http.get<RequestMovies>("https://api.themoviedb.org/3/movie/" + selector + "?api_key=cea68b520beecac6718820e4ac576c3a");
   }
 
@@ -27,6 +27,17 @@ export class MoviesService {
       .pipe(map(response => {
         return response.results.filter(m => m.genre_ids.find(g => g == id));
       }));
+  }
+
+  AddtoFavorites(m:Movie){
+    this.favoritesmovies.push(m);
+  }
+
+  RemovetoFavorites(m:Movie){
+    var index = this.favoritesmovies.findIndex(mov => mov.id == m.id);
+    this.favoritesmovies = this.favoritesmovies.slice(0,index)
+      .concat(this.favoritesmovies.slice(index+1,this.favoritesmovies.length));
+
   }
 
 }

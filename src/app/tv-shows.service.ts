@@ -9,6 +9,8 @@ import { catchError, retry, map } from 'rxjs/operators';
 })
 export class TvShowsService {
 
+  
+  favoritestvshows: TvShow[] = []; 
   constructor(private http: HttpClient) { }
 
   getTvShows(selector: string) {
@@ -27,6 +29,27 @@ export class TvShowsService {
       .pipe(map(response => {
         return response.results.filter(tv => tv.genre_ids.find(g => g == id));
       }));
+  }
+
+  AddtoFavorites(tv: TvShow){
+    this.favoritestvshows.push(tv);
+  }
+
+  RemovetoFavorites(tv : TvShow){
+    console.log("Delete tv: " + tv.name);
+    this.favoritestvshows.forEach(e => {
+      console.log("TVShows" + e.name);
+    });
+
+    var index = this.favoritestvshows.findIndex(tvs => tvs.id == tv.id);
+    console.log("Index: " + index.toString())
+
+    this.favoritestvshows = this.favoritestvshows.slice(0,index)
+      .concat(this.favoritestvshows.slice(index+1,this.favoritestvshows.length));
+      
+    this.favoritestvshows.forEach(e => {
+      console.log("TVShows" + e.name);
+    });
   }
 
 }
