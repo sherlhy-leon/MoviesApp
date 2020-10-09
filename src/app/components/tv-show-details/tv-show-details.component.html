@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-center align-items-center margin-top">
+    <div class="d-flex justify-content-center align-items-center">
+        <img class="img-p" src="https://image.tmdb.org/t/p/w300/{{tvshow.poster_path}}">
+        <div class="box"> 
+            <h4>{{tvshow.name}}</h4>
+            <p>{{tvshow.overview}}</p>
+            <div class="d-flex justify-content-between">
+                <img src="https://image.tmdb.org/t/p/w185/{{tvshow.backdrop_path}}">
+                <div>
+                    <h6>Popularity: {{tvshow.vote_average}}</h6>
+                    <button *ngIf="isfavorite" type="button" class="btn btn-primary" (click)="RemovetoFavorites(tvshow)">Remove</button>
+                    <button *ngIf="!isfavorite" type="button" class="btn btn-success" (click)="AddtoFavorites(tvshow)">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

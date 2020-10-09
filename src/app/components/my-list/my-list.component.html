@@ -1,0 +1,18 @@
+<div *ngIf="favorites.length > 0" class="container container-pos container-color">
+    <div class="row justify-content-around align-items-center" >
+            <div class=" col-lg-4 col-md-6 col-sm-12 mt-sm-1" *ngFor="let f of favorites">
+                <div class="image-and-title" >
+                    <img *ngIf="type == 'movie'" class="img-fluid" src="https://image.tmdb.org/t/p/w300/{{f.poster_path}}" routerLink="/movie/{{f.id}}">
+                    <img *ngIf="type == 'tvshow'" class="img-fluid" src="https://image.tmdb.org/t/p/w300/{{f.poster_path}}" routerLink="/tvshow/{{f.id}}">
+                    <h3 *ngIf="f.title">{{f.title}}</h3>
+                    <h3 *ngIf="f.name" >{{f.name}}</h3>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center align-items-center empty-list-pos" *ngIf="favorites.length == 0">
+        <img class="img-size" src="../../assets/emptyList.png"/>
+        <h2 class="font-color size" *ngIf="type=='movie'" > There are no favorites movies</h2>
+        <h2 class="font-color size" *ngIf="type=='tvshow'"> There are no favorites TV Shows</h2>
+</div>

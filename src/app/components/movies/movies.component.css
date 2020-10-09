@@ -1,0 +1,52 @@
+.image-and-title{
+    text-align: center;
+    padding: 10px;
+    /* transition: width 2s, height 4s; */
+}
+.img-size{
+    width: 100%;
+    height: 100%;
+}
+
+/* .image-and-title :hover {
+    width: 320px;
+    height: 470px;
+} */
+
+.margin-top{
+    margin-top: 100px;
+}
+
+.pos-relative{
+    position: relative !important;
+    transform: none !important;
+}
+
+.padding-2 {
+    padding: 2px;
+}
+
+.genres-position{
+    border:none; 
+    padding-left: 30px; 
+    padding-right: 0px; 
+    width: 21%;
+}
+
+.navbar-pos{
+    margin-top: 56px; 
+    padding: 10px; 
+    height: 100vh; 
+    position: fixed; 
+    width: 15%;
+}
+
+.container-pos{
+    margin-left: 18%; 
+    margin-top: 50px;
+}
+
+.pos {
+    height: 100vh; flex-direction: column;
+}
+

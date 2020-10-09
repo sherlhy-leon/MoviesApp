@@ -1,0 +1,30 @@
+.image-and-title{
+    text-align: center;
+    padding: 5px;
+    /* transition: width 2s, height 4s; */
+}
+
+.img-size{
+    width: 70%;
+    height: 100%;
+}
+.container-pos{
+    margin-top: 70px;
+} 
+
+.container-color{
+    background-color: lightgray;
+}
+
+.empty-list-pos {
+    height: 100vh; 
+    flex-direction: column;
+}
+
+.font-color {
+    color: gray;
+}
+
+.size {
+    height: 37vh;
+}

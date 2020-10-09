@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-center align-items-center margin-top">
+    <div class="d-flex justify-content-center align-items-center">
+        <img class="img-padding" src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}">
+        <div class="box"> 
+            <h4>{{movie.title}}</h4>
+            <p>{{movie.overview}}</p>
+            <div class="d-flex justify-content-between">
+                <img src="https://image.tmdb.org/t/p/w185/{{movie.backdrop_path}}">
+                <div>
+                    <h6>Popularity: {{movie.vote_average}}</h6>
+                    <button *ngIf="isfavorite" type="button" class="btn btn-primary" (click)="RemovetoFavorites(movie)">Remove</button>
+                    <button *ngIf="!isfavorite" type="button" class="btn btn-success" (click)="AddtoFavorites(movie)">Add</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
