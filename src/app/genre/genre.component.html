@@ -3,7 +3,7 @@
         <div class="f-size" *ngIf="genre.id==genreId">
             <a class="text-white font-italic pt-0" (click)="setCurrentGenreId(genre.id)" routerLink="/movie/genre/{{genre.id}}">{{genre.name}}</a>
         </div>
-        <a *ngIf="genre.id!=genreId" (click)="setCurrentGenreId(genre.id)" class="text-white pt-0"  routerLink="/movie/genre/{{genre.id}}">{{genre.name}}</a>
+        <a *ngIf="genre.id!=genreId" (click)="setCurrentGenreId(genre.id)" class="text-white pt-0"  routerLink="/movies/genre/{{genre.id}}">{{genre.name}}</a>
     </div>
     <div *ngIf="type=='tvshows'">
         <div class="f-size" *ngIf="genre.id==genreId">

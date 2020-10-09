@@ -1,1 +1,9 @@
-<p>search works!</p>
+
+<form  #myForm = "ngForm" class="form-inline" (ngSubmit) = "sendQuery()">
+    <div class="input-group">
+        <input class="form-control" (focus)="GetUrl()" [(ngModel)]="query" (keyup)="sendQuery()" type="search" placeholder="Search" name="search">
+        <div class="input-group-prepend">
+          <button class="btn btn-success rounded-right" type="submit">Search</button>
+        </div>
+    </div>
+</form>

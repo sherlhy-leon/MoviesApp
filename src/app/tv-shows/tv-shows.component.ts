@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TvShowsService } from '../tv-shows.service';
 import { TvShow, RequestTVShows } from '../tv-shows';
+import { SearchService } from '../search.service'
+
 
 @Component({
   selector: 'app-tv-shows',
@@ -11,12 +13,13 @@ import { TvShow, RequestTVShows } from '../tv-shows';
 export class TvShowsComponent implements OnInit {
 
   tvshows: TvShow[] = [];
-  constructor(private route: ActivatedRoute, private router: Router, private tvshowsService: TvShowsService) { }
+  search_result: TvShow[] = []
+  constructor(private route: ActivatedRoute, private searchService: SearchService, private tvshowsService: TvShowsService) { }
 
   ngOnInit(): void {
       this.route.paramMap.subscribe(params => {
-      var selector = params.get('selector');
-      var idG = +params.get('idG');
+      let selector = params.get('selector');
+      let idG = +params.get('idG');
       if(selector)
         this.getTvShows(selector);
       if (idG)
@@ -24,11 +27,14 @@ export class TvShowsComponent implements OnInit {
     });
   }
   getTvShows(selector: string): void {
-    this.tvshowsService.getTvShows(selector).subscribe((data : TvShow[]) => { this.tvshows = data});
+    this.searchService.search(this.searchService.query,`/tvshows/${selector}`);
+    this.searchService.tvshows.subscribe((data: TvShow[]) => {this.tvshows = data});
   }
 
   getTvShowsByGenres(idG: number): void {
     this.tvshowsService.getTvShowsByGenres(idG).subscribe((data: TvShow[]) => { this.tvshows = data });
   }
+
+  
 
 }

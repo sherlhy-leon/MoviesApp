@@ -4,6 +4,7 @@ import { MoviesService } from '../movies.service';
 import { TvShowsService } from '../tv-shows.service'; 
 import { Movie } from '../movies';
 import { TvShow } from '../tv-shows';
+import { SearchService } from '../search.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { TvShow } from '../tv-shows';
 })
 export class MyListComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router, private moviesService: MoviesService, private tvshowsService: TvShowsService) { }
+  constructor(private route: ActivatedRoute, private searchService: SearchService, private moviesService: MoviesService, private tvshowsService: TvShowsService) { }
   type: string = ""
   favorites = [];
   ngOnInit(): void {
@@ -32,11 +33,14 @@ export class MyListComponent implements OnInit {
   }
 
   getFavoritesMovies() {
-      this.favorites = this.moviesService.favoritesmovies;
+    this.searchService.search(this.searchService.query,"/favorites/movies");
+    this.searchService.favoritesMovies.subscribe((data: Movie[]) => {this.favorites = data});
+
   }
 
   getFavoritesTvShows() {
-    this.favorites = this.tvshowsService.favoritestvshows;
+    this.searchService.search(this.searchService.query,"/favorites/tvshows");
+    this.searchService.favoritesTvShows.subscribe((data: TvShow[]) => {this.favorites = data});
   }
 
 }

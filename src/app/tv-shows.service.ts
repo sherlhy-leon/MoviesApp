@@ -9,13 +9,18 @@ import { catchError, retry, map } from 'rxjs/operators';
 })
 export class TvShowsService {
 
-  
+  tvhows_ontheair: TvShow[] = [];
+  populars_tvshows: TvShow[] = [];
   favoritestvshows: TvShow[] = []; 
   constructor(private http: HttpClient) { }
 
   getTvShows(selector: string) {
     return this.http.get<RequestTVShows>("https://api.themoviedb.org/3/tv/" + selector + "?api_key=cea68b520beecac6718820e4ac576c3a")
     .pipe(map(res => {
+      if(selector == "popular")
+        this.populars_tvshows = res.results;
+      else if(selector == "on_the_air")
+        this.tvhows_ontheair = res.results;
       return res.results;
     }));
   }

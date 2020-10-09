@@ -10,12 +10,10 @@ import { MyListComponent } from './my-list/my-list.component';
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "home", component: HomeComponent},
-  {path:"movies", component: MoviesComponent},
-  {path:"tv-shows", component:TvShowsComponent},
   {path: "movie/:id", component: MovieDetailsComponent },
   {path: "tvshow/:id", component: TvShowDetailsComponent },
   {path: "movies/:selector", component: MoviesComponent },
-  {path: "movie/genre/:idG", component: MoviesComponent},
+  {path: "movies/genre/:idG", component: MoviesComponent},
   {path: "tvshows/:selector", component: TvShowsComponent },
   {path: "tvshows/genre/:idG", component: TvShowsComponent},
   {path: "favorites/:selector", component: MyListComponent}

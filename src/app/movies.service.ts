@@ -11,11 +11,23 @@ import { catchError, retry, map } from 'rxjs/operators';
 })
 export class MoviesService {
 
-   favoritesmovies: Movie[] = []; 
+  populars_movies: Movie[] = [];
+  movies_playing_now: Movie[] = [];
+  movies_upcoming: Movie[] = [];
+  favoritesmovies: Movie[] = []; 
   constructor(private http: HttpClient) { }
 
   getMovies(selector: string) {
-    return this.http.get<RequestMovies>("https://api.themoviedb.org/3/movie/" + selector + "?api_key=cea68b520beecac6718820e4ac576c3a");
+    return this.http.get<RequestMovies>("https://api.themoviedb.org/3/movie/" + selector + "?api_key=cea68b520beecac6718820e4ac576c3a")
+    .pipe(map(res => {
+        if(selector == "popular")
+          this.populars_movies = res.results;
+        else if(selector == "now_playing")
+          this.movies_playing_now = res.results;
+        else if(selector == "upcoming")
+          this.movies_upcoming = res.results;
+        return res.results;
+    }));
   }
 
   getMoviebyId(id: number) {

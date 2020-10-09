@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from '../movies.service';
-import { Movie, RequestMovies } from '../movies'
+import { Movie } from '../movies'
+import { SearchService } from '../search.service'
 
 
 @Component({
@@ -11,8 +12,9 @@ import { Movie, RequestMovies } from '../movies'
 })
 export class MoviesComponent implements OnInit {
 
-  movies: Movie[] = new Array<Movie>();
-  constructor(private route: ActivatedRoute, private router: Router, private moviesService: MoviesService) { }
+  movies: Movie[] = [];
+  search_result: Movie[] = []
+  constructor(private route: ActivatedRoute, private searchService: SearchService, private moviesService: MoviesService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -26,11 +28,14 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovies(selector: string): void {
-    this.moviesService.getMovies(selector).subscribe((data: RequestMovies) => { this.movies = data.results });
+    this.searchService.search(this.searchService.query,`/movies/${selector}`);
+    this.searchService.movies.subscribe((data: Movie[]) => {this.movies = data});
   }
 
   getMoviesByGenres(idG: number): void {
     this.moviesService.getMoviesByGenres(idG).subscribe((data: Movie[]) => { this.movies = data });
   }
+
+
 
 }
