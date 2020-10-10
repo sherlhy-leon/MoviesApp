@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {TvShowsService } from '../../services/tv-shows.service';
 import {TvShow } from '../../tv-shows';
 
@@ -12,7 +12,7 @@ export class TvShowDetailsComponent implements OnInit {
 
   isfavorite: boolean = false;
   tvshow: TvShow = new TvShow();
-  constructor(private route: ActivatedRoute, private router: Router, private tvshowService: TvShowsService) { }
+  constructor(private route: ActivatedRoute, private tvshowService: TvShowsService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {

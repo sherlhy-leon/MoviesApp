@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { SearchService } from '../../services/search.service'
 
 @Component({
@@ -13,7 +12,7 @@ export class SearchComponent implements OnInit {
   url: string = "";
   query: string = "";
 
-  constructor(private route: ActivatedRoute, private router: Router, private searchService: SearchService ) { }
+  constructor(private router: Router, private searchService: SearchService ) { }
 
   ngOnInit(): void {
   }

@@ -11,10 +11,12 @@ import { RequestTVShows, TvShow } from '../tv-shows';
 })
 export class GenreService {
 
+  root: string = "https://api.themoviedb.org/3/";
+  api_key: string = "?api_key=cea68b520beecac6718820e4ac576c3a";
   constructor(private http: HttpClient) { }
 
   getGenres(type: string):Observable<Genre[]> {
-    return this.http.get<RequestGenre>("https://api.themoviedb.org/3/genre/" + type + "/list?api_key=cea68b520beecac6718820e4ac576c3a")
+    return this.http.get<RequestGenre>(this.root + "genre/" + type + "/list" + this.api_key)
       .pipe(mergeMap(response => {
         if(type=="movie")
           return this.getActivesGenrestoMovis(response.genres);
@@ -24,13 +26,14 @@ export class GenreService {
   }
 
   getMovies() {
-    return this.http.get<RequestMovies>("https://api.themoviedb.org/3/movie/popular?api_key=cea68b520beecac6718820e4ac576c3a")
+    return this.http.get<RequestMovies>(this.root + "movie/popular" + this.api_key)
       .pipe(map(response => {
         return response.results;
       }));
   }
+  
   getTvShows() {
-    return this.http.get<RequestTVShows>("https://api.themoviedb.org/3/tv/popular?api_key=cea68b520beecac6718820e4ac576c3a")
+    return this.http.get<RequestTVShows>(this.root + "tv/popular" + this.api_key)
       .pipe(map(response => {
         return response.results;
       }));

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '../../services/movies.service';
-import { Movie,RequestMovies } from '../../movies'
+import { Movie } from '../../movies'
 
 @Component({
   selector: 'app-movie-details',
@@ -12,7 +12,7 @@ export class MovieDetailsComponent implements OnInit {
 
   isfavorite: boolean = false;
   movie: Movie = new Movie();
-  constructor(private route: ActivatedRoute, private router: Router, private moviesService: MoviesService) { }
+  constructor(private route: ActivatedRoute, private moviesService: MoviesService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
