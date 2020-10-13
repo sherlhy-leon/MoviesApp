@@ -14,9 +14,10 @@ import { SearchService } from '../../services/search.service';
 })
 export class MyListComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private searchService: SearchService, private moviesService: MoviesService, private tvshowsService: TvShowsService) { }
-  type: string = ""
+  type: string = "";
   favorites = [];
+  constructor(private route: ActivatedRoute, private searchService: SearchService) { }
+  
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       var selector = params.get('selector');
@@ -28,18 +29,16 @@ export class MyListComponent implements OnInit {
         this.getFavoritesTvShows();
         this.type = "tvshow";
       }
-        
     });
   }
 
   getFavoritesMovies() {
-    this.searchService.search(this.searchService.query,"/favorites/movies");
+    this.searchService.search(this.searchService.query,"favorites","movies");
     this.searchService.favoritesMovies.subscribe((data: Movie[]) => {this.favorites = data});
-
   }
 
   getFavoritesTvShows() {
-    this.searchService.search(this.searchService.query,"/favorites/tvshows");
+    this.searchService.search(this.searchService.query,"favorites","tvshows");
     this.searchService.favoritesTvShows.subscribe((data: TvShow[]) => {this.favorites = data});
   }
 

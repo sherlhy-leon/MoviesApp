@@ -13,7 +13,6 @@ import { SearchService } from '../../services/search.service'
 export class MoviesComponent implements OnInit {
 
   movies: Movie[] = [];
-  search_result: Movie[] = []
   constructor(private route: ActivatedRoute, private searchService: SearchService, private moviesService: MoviesService) { }
 
   ngOnInit(): void {
@@ -28,14 +27,11 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovies(selector: string): void {
-    this.searchService.search(this.searchService.query,`/movies/${selector}`);
+    this.searchService.search(this.searchService.query,"movies",selector);
     this.searchService.movies.subscribe((data: Movie[]) => {this.movies = data});
   }
 
   getMoviesByGenres(idG: number): void {
     this.moviesService.getMoviesByGenres(idG).subscribe((data: Movie[]) => { this.movies = data });
   }
-
-
-
 }

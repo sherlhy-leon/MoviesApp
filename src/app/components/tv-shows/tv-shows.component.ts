@@ -13,7 +13,6 @@ import { SearchService } from '../../services/search.service'
 export class TvShowsComponent implements OnInit {
 
   tvshows: TvShow[] = [];
-  search_result: TvShow[] = []
   constructor(private route: ActivatedRoute, private searchService: SearchService, private tvshowsService: TvShowsService) { }
 
   ngOnInit(): void {
@@ -27,14 +26,11 @@ export class TvShowsComponent implements OnInit {
     });
   }
   getTvShows(selector: string): void {
-    this.searchService.search(this.searchService.query,`/tvshows/${selector}`);
+    this.searchService.search(this.searchService.query,"tvshows",selector);
     this.searchService.tvshows.subscribe((data: TvShow[]) => {this.tvshows = data});
   }
 
   getTvShowsByGenres(idG: number): void {
     this.tvshowsService.getTvShowsByGenres(idG).subscribe((data: TvShow[]) => { this.tvshows = data });
   }
-
-  
-
 }

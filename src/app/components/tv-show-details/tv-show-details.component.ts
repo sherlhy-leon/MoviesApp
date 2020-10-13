@@ -28,15 +28,13 @@ export class TvShowDetailsComponent implements OnInit {
     this.tvshowService.getTVShowbyId(id).subscribe((data : TvShow) => { this.tvshow = data});
   }
 
-  AddtoFavorites(tv: TvShow){
-    this.tvshowService.AddtoFavorites(tv);
+  addtoFavorites(tv: TvShow){
+    this.tvshowService.addtoFavorites(tv);
     this.isfavorite = true;
-
   }
 
-  RemovetoFavorites(tv: TvShow){
-    console.log("Remove TVShow");
-    this.tvshowService.RemovetoFavorites(tv);
+  removetoFavorites(tv: TvShow){
+    this.tvshowService.removeFromFavorites(tv);
     this.isfavorite = false;
   }
 

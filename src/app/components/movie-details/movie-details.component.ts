@@ -28,13 +28,13 @@ export class MovieDetailsComponent implements OnInit {
     this.moviesService.getMoviebyId(id).subscribe((data : Movie) => { this.movie = data});
   }
 
-  AddtoFavorites(m: Movie){
-      this.moviesService.AddtoFavorites(m);
+  addtoFavorites(m: Movie){
+      this.moviesService.addtoFavorites(m);
       this.isfavorite = true;
   }
 
-  RemovetoFavorites(m: Movie){
-    this.moviesService.RemovetoFavorites(m);
+  removetoFavorites(m: Movie){
+    this.moviesService.removeFromFavorites(m);
     this.isfavorite = false;
   }
 
